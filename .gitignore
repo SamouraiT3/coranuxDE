@@ -1,0 +1,15 @@
+# Rust build output
+/target/
+/dist/
+/packaging/arch/src/target/
+/packaging/arch/pkg/
+
+# Generated Arch Linux packages
+/packaging/arch/*.pkg.tar.*
+
+# Local logs and editor/OS files
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

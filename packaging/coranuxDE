@@ -1,0 +1,3 @@
+#!/bin/sh
+export CORANUX_FULLSCREEN="${CORANUX_FULLSCREEN:-1}"
+exec /usr/lib/coranux/coranux_session "$@"

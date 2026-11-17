@@ -1,0 +1,37 @@
+[package]
+name = "coranux"
+version = "0.1.0"
+description = "Experimental Wayland desktop environment"
+readme = "README.md"
+license = "MIT"
+edition = "2024"
+autobins = false
+default-run = "coranux_session"
+
+[[bin]]
+name = "coranux_session"
+path = "src/bin/coranux_session.rs"
+
+[[bin]]
+name = "coranux_wm"
+path = "src/bin/coranux_wm.rs"
+
+[[bin]]
+name = "coranux_desktop"
+path = "src/bin/coranux_desktop.rs"
+
+[[bin]]
+name = "coranux_panel"
+path = "src/bin/coranux_panel.rs"
+
+[dependencies]
+eframe = "0.32"
+egui_extras = { version = "0.32", features = ["file", "image", "svg", "gif", "webp"] }
+freedesktop-icons = "0.4"
+image = { version = "0.25", features = ["png", "jpeg", "gif", "webp"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+libc = "0.2"
+bitflags = "2"
+smithay = { version = "0.7.0", default-features = false, features = ["backend_drm", "backend_egl", "backend_gbm", "backend_libinput", "backend_session_libseat", "backend_udev", "wayland_frontend", "desktop", "renderer_gl", "xwayland"] }
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }

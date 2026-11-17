@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=CoranuxDE
+Comment=Coranux desktop environment
+Exec=/usr/bin/coranuxDE
+TryExec=/usr/bin/coranuxDE
+Type=Application
+X-LightDM-DesktopName=Coranuxde
+X-LightDM-Session-Type=wayland

@@ -1,0 +1,44 @@
+pkgname=coranux
+pkgver=0.1.0
+pkgrel=14
+pkgdesc='Coranux desktop environment'
+arch=('x86_64')
+license=('unknown')
+depends=('libdrm' 'libinput' 'libxkbcommon' 'mesa' 'seatd' 'systemd-libs' 'xorg-xwayland')
+makedepends=('cargo')
+options=('!debug')
+source=()
+sha256sums=()
+
+build() {
+    cargo build \
+        --manifest-path "$startdir/../../Cargo.toml" \
+        --target-dir "$srcdir/target" \
+        --release \
+        --locked \
+        --bin coranux_session \
+        --bin coranux_wm \
+        --bin coranux_desktop \
+        --bin coranux_panel
+}
+
+check() {
+    cargo test \
+        --manifest-path "$startdir/../../Cargo.toml" \
+        --target-dir "$srcdir/target" \
+        --locked \
+        --bins
+}
+
+package() {
+    local binary
+    for binary in coranux_session coranux_wm coranux_desktop coranux_panel; do
+        install -Dm755 "$srcdir/target/release/$binary" \
+            "$pkgdir/usr/lib/coranux/$binary"
+    done
+
+    install -Dm755 "$startdir/../coranuxDE" \
+        "$pkgdir/usr/bin/coranuxDE"
+    install -Dm644 "$startdir/../coranux.desktop" \
+        "$pkgdir/usr/share/wayland-sessions/coranux.desktop"
+}
